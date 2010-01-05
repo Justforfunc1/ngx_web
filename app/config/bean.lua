@@ -11,20 +11,36 @@ id = { -- bean id
   single = 0  -- 是否单例，默认是1
 }
 --]]
-mysql = {
+test = {
     class = "db.mysql",
     arg = {
-        { value = "${mysql}" }
+        { value = "${test}" }
     }
 }
+
+ufo = {
+    class = "db.mysql",
+    arg = {
+        { value = "${ufo}" }
+    }
+}
+
+report = {
+    class = "db.mysql",
+    arg = {
+        { value = "${report}" }
+    }
+}
+
 redis = {
     class = "db.redis",
     arg = {
         { value = "${redis}" }
     }
 }
+
 paramService = {
-    class = "com.demo.service.common.paramService"
+    class = "com.demo.service.common.paramService",
 }
 
 testService = {
@@ -32,9 +48,6 @@ testService = {
     arg = { { ref = "redis" } }
 }
 
-dataVo = {
-	class = "com.demo.ssp.dataVo"
-}
 
 _include_ = {
     "/config/bean_uc.lua"

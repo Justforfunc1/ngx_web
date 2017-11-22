@@ -23,4 +23,21 @@ function _M.array_to_hash(t)
 	return h
 end
 
+
+--[[
+输出table
+--]]
+function _M.tab_print(str)
+   if not str then
+       return nil
+   end
+   for k,v in pairs(str) do
+       if (type(v) == 'table') then
+           _M.tab_print(v)  
+	   else   
+		   ngx.log(logger.i(k..' : '..v))
+       end
+	end                                                                                                                                    
+end
+
 return _M

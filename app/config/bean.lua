@@ -26,9 +26,14 @@ redis = {
 paramService = {
     class = "com.demo.service.common.paramService"
 }
+
 testService = {
     class = "com.demo.service.test.testService",
     arg = { { ref = "redis" } }
+}
+
+dataVo = {
+	class = "com.demo.ssp.dataVo"
 }
 
 _include_ = {

@@ -18,7 +18,7 @@ function _M.getMsgConfig(k, default_v)
 end
 
 function _M.getMsg(k, ...)
-	local val = getMsgConfig(k)
+	local val = _M.getMsgConfig(k)
 	if _.isEmpty(val) then
 		return string.format("msg %s not config.", k)
 	end

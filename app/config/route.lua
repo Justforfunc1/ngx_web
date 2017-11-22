@@ -32,7 +32,10 @@ route = {
     { "*", "/api/test/redis", "com.demo.ctrl.test.redis", "redis" },
     { "*", "/api/test/baidu", "com.demo.ctrl.test.httpclient", "baidu" },
     { "*", "/api/test/proxy", "com.demo.ctrl.test.httpclient", "proxy" },
-    { "*", "/api/test/form", "com.demo.ctrl.test.form", "form" }
+    { "*", "/api/test/form", "com.demo.ctrl.test.form", "form" },
+    { "POST", "/api/test/request", "com.demo.ctrl.test.bigRequest", "bigRequest" },
+    { "*", "/api/test/apitest1", "com.demo.ctrl.test.apiTest", "getOwnerInfo" },
+    { "*", "/api/test/apitest2", "com.demo.ctrl.test.apiTest", "getOwnerList" }
 }
 
 route_pattern = {}

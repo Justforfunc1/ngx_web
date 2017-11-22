@@ -10,10 +10,11 @@ function _M.redis(request, response)
     local beanFactory = panshi_context.getBeanFactory()
     local redis_util = beanFactory:getBean("redis")
     local redis = redis_util:getConnect()
-    local res = redis:hgetall("user:info:" .. uid);
-    local userinfo = table_util.array_to_hash(res)
+    local res = redis:get(uid)
+    --local res = redis:hgetall("user:info:" .. uid);
+    --local userinfo = table_util.array_to_hash(res)
     redis_util:close(redis)
-    response:writeln(cjson.encode(userinfo))
+    response:writeln(cjson.encode(res))
 end
 
 return _M

@@ -1,6 +1,10 @@
 
 --[[
-	云风实现的lua OO的一种方案
+	OO类，目前功能不可以。
+	无继承类使用class
+	继承类使用object
+	todo:
+	整合class与object模块，统一实现通用的class类
 --]]
 
 local _class = {}

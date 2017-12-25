@@ -93,8 +93,24 @@ function execute_ctrl_new()
         end
         return
     end
+    --control.before
+    local ctrl_instance = execute_var["ctrl"].new(ngx.ctx.request, ngx.ctx.response)
+    local ctrl_class = execute_var["ctrl_config"].class
+    local ctrl_action = execute_var["ctrl_config"].method
+    local ctrl_before = ctrl_instance.before
+    if ctrl_before and _.isFunction(ctrl_before) then
+        local before_ok, before_info = ctrl_before(ctrl_instance, ctrl_class, ctrl_action)
+        if not before_ok then
+            ngx.log(ngx.ERR, "ctrl execute control before error : ", before_info)
+            if before_info then
+                ngx.ctx.response:writeln(before_info)
+            end
+            return
+        end
+    else
+        ngx.log(ngx.INFO, "ctrl has no before.")
+    end
     --control.method
-    local ctrl_instance = execute_var["ctrl"]:new()
     local ctrl_method = ctrl_instance[execute_var["ctrl_config"].method]
     if ctrl_method and _.isFunction(ctrl_method) then
         local call_ok, err_info = pcall(ctrl_method, ctrl_instance, ngx.ctx.request, ngx.ctx.response)
@@ -115,8 +131,23 @@ function execute_ctrl_fun()
         end
         return
     end
+    --control.before
+    local ctrl_class = execute_var["ctrl_config"].class
+    local ctrl_action = execute_var["ctrl_config"].method
+    local ctrl_before = execute_var["ctrl"].before
+    if ctrl_before and _.isFunction(ctrl_before) then
+        local before_ok, before_info = ctrl_before(ctrl_class, ctrl_action)
+        if not before_ok then
+            ngx.log(ngx.ERR, "ctrl execute control before error : ", before_info)
+            if before_info then
+                ngx.ctx.response:writeln(before_info)
+            end
+            return
+        end
+    else
+        ngx.log(ngx.INFO, "ctrl has no before.")
+    end
     --control.method
-    local ctrl = execute_var["ctrl"]
     local ctrl_method = ctrl[execute_var["ctrl_config"].method]
     if ctrl_method and _.isFunction(ctrl_method) then
         local call_ok, err_info = pcall(ctrl_method, ngx.ctx.request, ngx.ctx.response)
@@ -143,6 +174,7 @@ function execute_before()
                 end
             else
                 ngx.log(ngx.ERR, "interceptor call beforeHandle fail : ", rs_ok)
+                return false, "interceptor exception."
             end
         end
     end

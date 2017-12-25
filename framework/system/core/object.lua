@@ -1,13 +1,14 @@
 
 --[[
 	云风实现的lua OO的一种方案
+	实现可继承的方式的Object基类
+	core中的Class基类用于无继承的类
 --]]
 
 local _class = {}
-
 local class = function (super)
 	local class_type = {}
-	class_type.ctor = false
+	class_type.init = false
 	class_type.super = super
 	class_type.new = function(...)
 		local obj={}
@@ -17,8 +18,8 @@ local class = function (super)
 				if c.super then
 					create(c.super,...)
 				end
-				if c.ctor then
-					c.ctor(obj,...)
+				if c.init then
+					c.init(obj,...)
 				end
 			end
 
@@ -46,7 +47,6 @@ local class = function (super)
 			end
 		})
 	end
- 
 	return class_type
 end
 

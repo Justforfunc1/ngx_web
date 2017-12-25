@@ -1,4 +1,6 @@
 --[[
+目前bean只支持无继承的类
+
 id = { -- bean id
   class = "", -- 类地址
   arg = { -- 构造参数注入
@@ -42,12 +44,6 @@ redis = {
 paramService = {
     class = "com.demo.service.common.paramService",
 }
-
-testService = {
-    class = "com.demo.service.test.testService",
-    arg = { { ref = "redis" } }
-}
-
 
 _include_ = {
     "/config/bean_uc.lua"

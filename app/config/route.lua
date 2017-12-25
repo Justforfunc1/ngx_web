@@ -35,25 +35,17 @@ route = {
     { "*", "/api/test/baidu", "com.demo.controller.test.httpclient", "baidu" },
     { "*", "/api/test/proxy", "com.demo.controller.test.httpclient", "proxy" },
     { "*", "/api/test/form", "com.demo.controller.test.form", "form" },
+    { "*", "/api/test/ctrtest1", "com.demo.controller.test.user", "getUserByKey" },
+    { "*", "/api/test/ctrtest2", "com.demo.controller.test.user", "putUserInfo" },
+    { "*", "/api/test/ctrtest3", "com.demo.controller.test.user", "updateUserInfo" },
     
     --dataBase接口测试
     { "*", "/api/test/database1", "com.demo.controller.test.database", "selectInfo" },
     { "*", "/api/test/database2", "com.demo.controller.test.database", "insertInfo" },
     { "*", "/api/test/database3", "com.demo.controller.test.database", "updateInfo" },
     { "*", "/api/test/database4", "com.demo.controller.test.database", "updateByWhere" },
-    { "*", "/api/test/database5", "com.demo.controller.test.database", "returnSql" },
-    
-    --Module接口测试
-    { "*", "/api/test/moduletest1", "com.demo.module.test.testModule", "loadByKey" },
-    { "*", "/api/test/moduletest2", "com.demo.module.test.testModule", "save" },
-    { "*", "/api/test/moduletest3", "com.demo.module.test.testModule", "update" },
-    { "*", "/api/test/moduletest4", "com.demo.module.test.testModule", "uByWhere" },
-    { "*", "/api/test/moduletest5", "com.demo.module.test.testModule", "listByWhere" },
-    
-    --Controller接口测试
-    { "*", "/api/test/ctrtest1", "com.demo.controller.test.user", "getUserByKey" },
-    { "*", "/api/test/ctrtest2", "com.demo.controller.test.user", "putUserInfo" },
-    { "*", "/api/test/ctrtest3", "com.demo.controller.test.user", "updateUserInfo" }
+    { "*", "/api/test/database5", "com.demo.controller.test.database", "returnSql" }
+
     
 }
 
@@ -68,4 +60,10 @@ interceptor = {
         },
         class = "interceptor.exception.common"
     }
+ --[[   {
+        url = {
+            {"*", "/api/test", true}
+        },
+        class = "interceptor.exception.auth"
+    }-]]
 }

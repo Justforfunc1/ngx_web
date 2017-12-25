@@ -3,6 +3,10 @@
 --]]
 local _M = {}
 
+--todo: 
+--功能：必要参数检验 [appkey] [apiversion] [token] [timestamp] 
+--返回：请求头参数缺少
+
 --before
 function _M.beforeHandle()
     local request = ngx.ctx.request

@@ -11,6 +11,7 @@ PANSHI_C = {}
 
 --常用库
 Class = require("core.class")
+Object = require("core.object")
 cjson = require("cjson")
 cjson.encode_empty_table_as_object(false)
 _ = require("moses")
@@ -27,5 +28,20 @@ panshi_msg = require("core.message")
 --上下文模块
 panshi_context = require("core.context")
 
+--Controller模块
+panshi_controller = require("controller.controller")
+
+--Service模块
+panshi_service = require("service.service")
+
+--Module模块
+panshi_module = require("module.module")
+
+--ValiDate模块
+panshi_validate = require("validate.validate")
+
 --日志模块(只是辅助)
 logger = require("util.logger")
+
+
+

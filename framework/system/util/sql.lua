@@ -7,6 +7,7 @@ sql_table = {
     update SYS_USER @{set} @{where} @{limit}
   ]],
   set = {
+  
     "USER_NAME = #{userName}",
     "UPDATED_TIME = #{updatedTime}"
   },

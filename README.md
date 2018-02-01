@@ -1,6 +1,6 @@
-##lua_web
+##ngx_web
 
-> lua_web 基于openresty 实现web端接口框架  
+> ngx_web 基于openresty 实现web端接口框架  
 参照luastar的spring bean管理  
 
 **version 1.0**
